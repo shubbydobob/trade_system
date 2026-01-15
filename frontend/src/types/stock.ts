@@ -6,3 +6,4 @@ export interface StockSummary {
   avgTradeAmount90d: number;
   tradeDate: string;
 }
+

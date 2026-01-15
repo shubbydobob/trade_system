@@ -21,6 +21,9 @@ public class StockDailyPrice {
     @Column(name = "trade_date")
     private LocalDate tradeDate;
 
+    @Column(name = "volume")
+    private Long volume;
+
     @Column(name = "adj_close_price")
     private Double adjClosePrice;
 

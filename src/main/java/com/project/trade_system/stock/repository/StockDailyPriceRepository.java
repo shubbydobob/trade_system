@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -40,6 +42,25 @@ public interface StockDailyPriceRepository extends JpaRepository<StockDailyPrice
             """, nativeQuery = true)
     Double findAvgTradeAmount90d(@Param("ticker") String ticker);
 
+    @Query("""
+                select s
+                from StockDailyPrice s
+                where s.ticker = :ticker
+                  and s.tradeDate <= :date
+                order by s.tradeDate desc
+            """)
+    List<StockDailyPrice> findHistory(
+            @Param("ticker") String ticker,
+            @Param("date") LocalDate date
+    );
 
+    @Query("""
+        select distinct s.ticker
+        from StockDailyPrice s
+        where s.tradeDate = :date
+    """)
+    List<String> findTickersByDate(
+            @Param("date") LocalDate date
+    );
 }
 
