@@ -10,7 +10,6 @@ import com.project.trade_system.stock.service.model.StockAnalysisData;
 import com.project.trade_system.stock.service.strategy.score.StrategyScore;
 import com.project.trade_system.stock.service.strategy.score.StrategyScoreCalculator;
 import lombok.RequiredArgsConstructor;
-import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -44,7 +43,7 @@ public class StockAnalysisService {
                             ticker, date
                     );
 
-            if (history.size() < 200) continue;
+            if (history.size() < 120) continue;
 
             StockAnalysisData data =
                     StockAnalysisData.builder()

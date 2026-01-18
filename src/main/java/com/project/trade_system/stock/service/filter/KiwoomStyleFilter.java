@@ -4,10 +4,7 @@ import com.project.trade_system.stock.service.model.StockAnalysisData;
 
 public class KiwoomStyleFilter implements StockFilter {
 
-    private final double minTradeAmount;
-
     public KiwoomStyleFilter(double minTradeAmount) {
-        this.minTradeAmount = minTradeAmount;
     }
 
     @Override
